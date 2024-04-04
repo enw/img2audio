@@ -47,7 +47,9 @@ def generate_story(scenario):
 # text to speech using `requests`
 def text2speech(message):
     # API_URL = "https://api-inference.huggingface.co/models/facebook/tts_transformer-zh-cv7_css10"
-    API_URL = "https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits"
+    # API_URL = "https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits"
+    API_URL = "https://api-inference.huggingface.co/models/facebook/fastspeech2-en-ljspeech"
+
     headers = {"Authorization": f"Bearer {HUGGINGFACEHUB_API_TOKEN}"}
     payloads = {
         "inputs": message,
@@ -59,7 +61,7 @@ def text2speech(message):
 
 def main():
     st.set_page_config(
-        page_title="Turn your image into an audio"
+        page_title="Turn your image into an audio story",
     )
     
     st.header("Turn your image into an audio story")
