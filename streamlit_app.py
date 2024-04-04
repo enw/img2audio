@@ -59,10 +59,10 @@ def text2speech(message):
 
 def main():
     st.set_page_config(
-        page_title="Turn Img into Audio story"
+        page_title="Turn your image into an audio"
     )
     
-    st.header("Turn Img into Audio story")
+    st.header("Turn your image into an audio story")
     uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
     if uploaded_file is not None:
