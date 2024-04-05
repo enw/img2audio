@@ -12,13 +12,12 @@ HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # img2text
 def img2text(url):
-    image_to_text = pipeline(
-        "image-to-text", model="Salesforce/blip-image-captioning-base"
-    )
-    text = image_to_text(url)
-    print(text)
-    return text
-
+    API_URL = "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base"
+    headers = {"Authorization": f"Bearer {HUGGINGFACEHUB_API_TOKEN}"}
+    with open(url, "rb") as f:
+        data = f.read()
+    response = requests.post(API_URL, headers=headers, data=data)
+    return response.json()
 
 # llm
 def generate_story(scenario):
@@ -84,7 +83,7 @@ def main():
             st.write(story)
 
         st.audio("audio.flac")
-        
+
 
 if __name__ == "__main__":
     main()
